@@ -12,8 +12,8 @@ movieForm.addEventListener("submit", async event => {
     if (slug) {
         try {
             let movie = slugify(slug, '_')
-            const weatherData = await getData(movie);
-            displayInfo(weatherData);
+            const movieData = await getData(movie);
+            displayInfo(movieData);
         } catch (err) {
             console.log(err);
             displayError(err);
@@ -39,7 +39,7 @@ async function getData(movie) {
 
 function displayInfo(data) {
     console.log(data);
-    // Add code here to display the fetched movie data inside the card
+    
     try {
         card.textContent = "";
         card.style.display = "flex";
