@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+body{
+    background-color:#f5f4e2;
+    font-family: Inter;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: bolder;
+    color: #3c3b3a;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.findTitle {
+    margin-right: 15px;
+}
+
+.movieTitle {
+    text-decoration: underline;
+    text-decoration-style:dashed;
+    margin-right: 2px;
+}
+
+.container {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.movieForm {
+    margin-bottom: 30px;
+}
+
+.movieInput {
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    font-family: monospace;
+    font-weight: bolder;
+    background-color: #e1e0ce;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+
+.movieInput:focus {
+    outline: none;
+    border: 1px dashed orange;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #3c3b3a;
+    color: #fff;
+}
+
+button[type="submit"]:hover {
+    background-color: #0c50ff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+.card {
+    border-radius: 25px;
+    padding: 10px 50px;
+    min-width: 600px;
+    background-color: #e1e0ce;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.movieDisplay {
+    text-align: center;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    /* width: 100%; */
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.errorDisplay {
+    color: red;
+    font-size: 1.5rem;
+}
+
+.imageContainer {
+    padding: 20px;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    align-items: flex-start;
+    font-weight: bolder;
+    font-size: 20px;
+    color: #202020;
+}
+
+.textContainer p {
+    white-space: pre;
+    margin-bottom: 0.5rem;
+}
+
+.poster {
+    display: block; 
+    margin-right: 2vw;
+    max-height: 350px;
+    /* min-height: 60%; */
+    min-width: 90%;
+    box-shadow: 8px 8px 15px 5px rgba(0, 0, 0, 0.5);
+}
+
+.imdbUrl {
+    margin-top: 20%;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    color: #0c50ff;
+}
+
+.imdbUrl:hover {
+    text-decoration: underline;
+    text-decoration-style: solid;
+    color: #0d00ff;
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .findTitle {
+        margin-right: 0.977vw;
+    }
+
+    .movieTitle {
+        margin-right: 0.977vw;
+    }
+
+    .movieForm {
+        margin-bottom: 1.953vw;
+    }
+
+    .movieInput {
+        padding: 10px;
+        width: 40.531vw;
+        font-size: 0.89rem;
+    }
+
+    button[type="submit"] {
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 0.89rem;
+    }
+
+    .card {
+        max-width: 90%;
+        min-width: unset;
+        /* padding: 5px; */
+    }
+
+    .errorDisplay {
+        font-size: 0.89rem;
+    }
+
+    .imageContainer {
+        display: block;
+        text-align: center;
+        margin-bottom: 1vw;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .textContainer {
+        font-size: 11px;
+    }
+
+    .poster {
+        max-width: 45%;
+        box-shadow: 8px 8px 15px rgba(0, 0, 0, 0.5);
+        margin-right: 5%;
+    }
+
+}
