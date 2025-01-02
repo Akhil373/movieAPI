@@ -148,6 +148,11 @@ button[type="submit"]:hover {
     color: #0d00ff;
 }
 
+.message-el {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
 @media (max-width: 480px) {
     .title {
         font-size: 1.5rem;

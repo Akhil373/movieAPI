@@ -5,14 +5,19 @@ const movieInput = document.querySelector(".movieInput");
 const card = document.querySelector(".card");
 const apiKey = "4fafc985";
 
-movieForm.addEventListener("submit", async event => {
+movieForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    const messageElement = document.createElement("p");
+    messageElement.classList.add("message-el");
+    messageElement.textContent = "Fetching data...";
+    document.body.appendChild(messageElement);
 
     const slug = movieInput.value;
     if (slug) {
         try {
-            let movie = slugify(slug, '_')
-            const movieData = await getData(movie);
+            let movie = slugify(slug, "_");
+            const movieData = await getData(movie, messageElement);
             displayInfo(movieData);
         } catch (err) {
             console.log(err);
@@ -23,23 +28,32 @@ movieForm.addEventListener("submit", async event => {
     }
 });
 
-async function getData(movie) {
+async function getData(movie, messageElement) {
     const apiURL = `https://www.omdbapi.com/?s=${movie}&apikey=${apiKey}`;
 
     const response = await fetch(apiURL);
     console.log(response);
 
-    if (!response.ok) {
-        throw new Error("Could not fetch the movie data");
+    try {
+        const response = await fetch(apiURL);
+        console.log(response);
+
+        if (!response.ok) {
+            throw new Error("Could not fetch the movie data");
+        }
+
+        return await response.json();
+    } catch (error) {
+        console.error(error);
+
+    } finally {
+        document.body.removeChild(messageElement);
     }
-
-    return await response.json();
-
 }
 
 function displayInfo(data) {
     console.log(data);
-    
+
     try {
         card.textContent = "";
         card.style.display = "flex";
@@ -79,7 +93,7 @@ function displayInfo(data) {
         movieType.textContent = `TYPE:  ${data.Search[0].Type}`;
 
         const imdbUrl = document.createElement("a");
-        imdbUrl.href = `https://www.imdb.com/title/${data.Search[0].imdbID}/`
+        imdbUrl.href = `https://www.imdb.com/title/${data.Search[0].imdbID}/`;
         imdbUrl.target = "_blank";
         imdbUrl.textContent = "↗ Visit IMDB Page";
         imdbUrl.classList.add("imdbUrl");
@@ -103,11 +117,9 @@ function displayInfo(data) {
         // card.appendChild(movieYear);
         // card.appendChild(imdbID);
         // card.appendChild(movieType);
-
     } catch (err) {
         displayError("Could not find movie");
     }
-
 }
 
 function displayError(message) {
@@ -116,7 +128,7 @@ function displayError(message) {
     errorDisplay.classList.add("errorDisplay");
 
     const errorImg = document.createElement("img");
-    errorImg.src = "/img/sad (Custom).png"
+    errorImg.src = "/img/sad (Custom).png";
     errorImg.classList.add("errorImg");
 
     card.textContent = "";
