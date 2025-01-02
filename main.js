@@ -45,7 +45,6 @@ async function getData(movie, messageElement) {
         return await response.json();
     } catch (error) {
         console.error(error);
-
     } finally {
         document.body.removeChild(messageElement);
     }
