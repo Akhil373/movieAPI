@@ -26,13 +26,11 @@ movieForm.addEventListener("submit", async (event) => {
     } else {
         displayError("Please enter a movie");
     }
+    document.body.removeChild(messageElement);
 });
 
 async function getData(movie, messageElement) {
     const apiURL = `https://www.omdbapi.com/?s=${movie}&apikey=${apiKey}`;
-
-    const response = await fetch(apiURL);
-    console.log(response);
 
     try {
         const response = await fetch(apiURL);
@@ -45,8 +43,6 @@ async function getData(movie, messageElement) {
         return await response.json();
     } catch (error) {
         console.error(error);
-    } finally {
-        document.body.removeChild(messageElement);
     }
 }
 
@@ -68,6 +64,10 @@ function displayInfo(data) {
         poster.alt = "Poster unavailable :(";
         let url = data.Search[0].Poster;
         poster.src = url;
+
+        poster.onerror = () => {
+            poster.classList.add("poster-error");
+        };
 
         const newURL = url.replace(/_SX300(?=\.)/, "");
         console.log(newURL);
