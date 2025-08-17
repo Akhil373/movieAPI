@@ -3,7 +3,7 @@
 const movieForm = document.querySelector(".movieForm");
 const movieInput = document.querySelector(".movieInput");
 const card = document.querySelector(".card");
-const apiKey = "4fafc985";
+const apiKey = "4fafc985"; //doesn't matter, free api
 
 movieForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -34,7 +34,7 @@ async function getData(movie, messageElement) {
 
     try {
         const response = await fetch(apiURL);
-        console.log(response);
+        // console.log(response);
 
         if (!response.ok) {
             throw new Error("Could not fetch the movie data");
@@ -47,7 +47,7 @@ async function getData(movie, messageElement) {
 }
 
 function displayInfo(data) {
-    console.log(data);
+    // console.log(data);
 
     try {
         card.textContent = "";
