@@ -70,7 +70,7 @@ function displayInfo(data) {
         };
 
         const newURL = url.replace(/_SX300(?=\.)/, "");
-        console.log(newURL);
+        // console.log(newURL);
         const link = document.createElement("a");
         link.href = newURL;
         link.target = "_blank";
